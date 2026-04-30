@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
-
+import dotenv from "dotenv";
+dotenv.config();
+const BACKEND_URL = process.env.Backend_URL;
 type ResultRow = Record<string, unknown>;
 
 type ReconciliationResponse = {
@@ -124,7 +126,7 @@ function App() {
     formData.append("recon_file", files.recon_file as Blob);
 
     try {
-      const response = await fetch("http://localhost:8000/reconcile", {
+      const response = await fetch(BACKEND_URL, {
         method: "POST",
         body: formData,
       });
