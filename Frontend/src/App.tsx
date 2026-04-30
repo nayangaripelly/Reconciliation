@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
-import dotenv from "dotenv";
-dotenv.config();
-const BACKEND_URL = process.env.Backend_URL as string;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL as string;
 type ResultRow = Record<string, unknown>;
 
 type ReconciliationResponse = {
